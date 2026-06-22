@@ -64,11 +64,28 @@ data/
 
 ### Pipeline (CRAwLeR dataset construction)
 
-To run these scripts:
-WILLIAM PUT YOUR STUFF HERE
 **Stage 0 — Parse raw documents into chunks.**
 
+Parse the raw legal HTML into chunked `.jsonl` files before running the evaluation pipeline. 
 
+**Polish (CRAwLeR-PL)**
+Run the parser script with your input and output paths:
+```bash
+python scripts/parserArtPolishFullDocument.py <input.html> <output.jsonl>
+```
+
+**Danish (CRAwLeR-DK)**
+The script uses hardcoded paths. Open `scripts/stkparserRetsInformation.py` and edit the bottom block with your document's path and ID:
+```python
+if __name__ == "__main__":
+    jsonl_data, total_candidates = parse_retsinformation_html('path/to/input.html', doc_id="your_doc_id") 
+    # ...
+    with open('path/to/output.jsonl', 'w', encoding='utf-8') as out_file:
+```
+Then execute it:
+```bash
+python scripts/stkparserRetsInformation.py
+```
 
 Place the chunked documents in a location of the specified format: `data/processed/{experiment_folder}/cluster_{A,B,T}/{document_name}/chunks.json`
 For example, if parsing the `obligationtodefend` HTML using ELI API, once the `.json` document has been obtained, put it into: `data/processed/polish_final_cluster_reparsed_ablation/cluster_A/obligationtodefend/chunks.json`
