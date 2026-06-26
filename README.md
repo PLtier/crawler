@@ -2,6 +2,9 @@
 
 Pipeline and benchmarks (CRAwLeR-DK, CRAwLeR-PL) for evaluating cross-reference-aware context utilization in chunk retrieval over legal documents.
 
+## Data
+Datasets are available on HuggingFace: [CRAwLeR-PL](https://huggingface.co/datasets/macja/CRAwLeR-PL) and [CRAwLeR-DK](https://huggingface.co/datasets/macja/CRAwLeR-DK).
+
 ## Replicate
 
 Experiments were run on macOS (control machine) with the LLM workloads served from a vLLM endpoint on CSC LUMI. The dataset construction pipeline and all evaluation can be reproduced by any host with an OpenAI-compatible vLLM endpoint serving the required model IDs and a working `uv` install.
